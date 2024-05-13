@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkeadj87rkb6q"]
+
+[ext_resource type="Shader" path="res://scenes/shaders/spiral.gdshader" id="1_arpoa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrmq0"]
+shader = ExtResource("1_arpoa")
+shader_parameter/resolution = Vector2(160, 240)
+shader_parameter/spiral_color = Color(0.2, 0.3, 0.6, 1)
+
+[node name="Spiral" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jrmq0")
+offset_right = 160.0
+offset_bottom = 240.0

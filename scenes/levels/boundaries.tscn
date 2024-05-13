@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://3xgxhvccjo03"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_puv1r"]
+b = Vector2(2.08165e-12, 240)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lwhcu"]
+a = Vector2(2.08165e-12, 240)
+b = Vector2(160, 240)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_h1br3"]
+a = Vector2(160, 2.08165e-12)
+b = Vector2(160, 240)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bc1dm"]
+b = Vector2(160, 2.08165e-12)
+
+[node name="Boundaries" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Left" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_puv1r")
+
+[node name="Bot" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_lwhcu")
+
+[node name="Right" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_h1br3")
+
+[node name="Top" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_bc1dm")

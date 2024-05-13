@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmyqkyg444edq"]
+
+[ext_resource type="Script" path="res://scenes/people/base_person.gd" id="1_u5sus"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxyiy"]
+
+[node name="BasePerson" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_u5sus")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xxyiy")
+debug_color = Color(0.894118, 0.266667, 0.470588, 0.419608)

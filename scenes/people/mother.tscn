@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw6lpwcsdikry"]
+
+[ext_resource type="Script" path="res://scenes/people/mother.gd" id="1_2cdgm"]
+
+[node name="Mother" type="Node2D"]
+script = ExtResource("1_2cdgm")
+
+[node name="BirthTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="BirthTimer" to="." method="_on_birth_timer_timeout"]

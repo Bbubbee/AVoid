@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Person" load_steps=2 format=3 uid="uid://e5rx78nhigfj"]
+
+[ext_resource type="Script" path="res://data/person.gd" id="1_5ph67"]
+
+[resource]
+script = ExtResource("1_5ph67")
+name = "rav"
+speed = 200.0
