@@ -22,6 +22,7 @@ func _ready() -> void:
 		
 		# Add it to the lanes. 
 		lanes.append(lane_center)
+		
 	
 
 
