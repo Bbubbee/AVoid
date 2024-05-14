@@ -14,6 +14,13 @@ func _ready() -> void:
 	self.position.y = 220
 	current_lane = 2
 	self.position.x = Lanes.lanes[current_lane]
+	
+	
+@onready var invulnerability_timer: Timer = $InvulnerabilityTimer
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
+	if not invulnerability_timer.is_stopped(): return
+	
 	Stats.hp -= 1 
+	
+	invulnerability_timer.start() 

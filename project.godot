@@ -21,6 +21,7 @@ Lanes="*res://utils/globals/lanes.gd"
 Events="*res://utils/globals/events.gd"
 Stats="*res://utils/globals/stats.gd"
 SceneTransition="*res://scenes/ui/scene_transition.tscn"
+SaveLoad="*res://utils/globals/save_load.gd"
 
 [display]
 
