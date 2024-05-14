@@ -1,6 +1,7 @@
 extends Area2D
 
 var person: Person = preload("res://data/people/rav.tres")
+@onready var sprite: Sprite2D = $Sprite
 
 var difficulty_modifier: float 
 
@@ -13,7 +14,7 @@ func init(new_person: Person):
 	person = new_person
 	
 	# Calculate speed. 
-	
+	sprite.texture = person.texture
 	
 	set_physics_process(true)
 	
