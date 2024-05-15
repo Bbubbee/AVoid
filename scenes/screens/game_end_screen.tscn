@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://si08yje5547n"]
+[gd_scene load_steps=3 format=3 uid="uid://si08yje5547n"]
 
 [ext_resource type="Script" path="res://scenes/screens/game_end_screen.gd" id="1_5pvtf"]
+[ext_resource type="FontFile" uid="uid://cjr6tc40jew43" path="res://assets/font/creepy_circus.ttf" id="2_nfqtp"]
 
 [node name="GameEndScreen" type="Control"]
 layout_mode = 3
@@ -25,16 +26,19 @@ alignment = 1
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_nfqtp")
 text = "A Void"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_nfqtp")
 text = "Start"
 
 [node name="HighscoreLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_nfqtp")
 text = "Highscore"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

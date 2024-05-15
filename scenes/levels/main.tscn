@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsr7hmaqohut0"]
+[gd_scene load_steps=6 format=3 uid="uid://dsr7hmaqohut0"]
 
 [ext_resource type="PackedScene" uid="uid://b1payd28naxy7" path="res://scenes/player/player.tscn" id="3_342tw"]
 [ext_resource type="PackedScene" uid="uid://bw6lpwcsdikry" path="res://scenes/people/mother.tscn" id="3_800ej"]
 [ext_resource type="Script" path="res://scenes/ui/ui_root.gd" id="3_yhs2l"]
+[ext_resource type="Script" path="res://scenes/levels/camera.gd" id="4_nq8qp"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lbovo"]
 
@@ -36,3 +37,9 @@ anchor_right = 1.0
 offset_left = -1.0
 offset_bottom = 23.0
 grow_horizontal = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 120)
+script = ExtResource("4_nq8qp")
+NOISE_SHAKE_STRENGTH = 10.0
+metadata/_edit_lock_ = true

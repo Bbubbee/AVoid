@@ -16,6 +16,7 @@ var difficulty: int = 0:
 		difficulty = clamp(new_difficulty, 0, 4) 	
 		set_difficulty.emit(difficulty)
 
+signal got_hugged
 var max_hp: int = 3
 @onready var hp: int = max_hp:
 	set(new_hp): 
@@ -23,9 +24,11 @@ var max_hp: int = 3
 		
 		if hp <= 0: 
 			SaveLoad.save_score(void_score)
+			got_hugged.emit()
 			Events.game_over.emit()
 		else: 
 			Events.hp_changed.emit(hp)
+			got_hugged.emit()
 	
 
 func reset_stats(): 
