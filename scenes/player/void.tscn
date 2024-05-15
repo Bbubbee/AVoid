@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://wkxjwp25ccsh"]
+
+[ext_resource type="Texture2D" uid="uid://b7vqf3xkgh8hd" path="res://assets/people/void/spritesheet.png" id="1_kxsy7"]
+[ext_resource type="Script" path="res://scenes/player/void.gd" id="2_53l7l"]
+
+[node name="Void" type="Sprite2D"]
+modulate = Color(0.239216, 0.239216, 0.239216, 1)
+position = Vector2(-2.98023e-08, -2.98023e-08)
+scale = Vector2(0.292279, 0.292279)
+texture = ExtResource("1_kxsy7")
+hframes = 3
+frame = 2
+script = ExtResource("2_53l7l")
+
+[node name="AnimationTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

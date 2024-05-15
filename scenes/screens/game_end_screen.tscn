@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://si08yje5547n"]
+[gd_scene load_steps=5 format=3 uid="uid://si08yje5547n"]
 
 [ext_resource type="Script" path="res://scenes/screens/game_end_screen.gd" id="1_5pvtf"]
 [ext_resource type="FontFile" uid="uid://cjr6tc40jew43" path="res://assets/font/creepy_circus.ttf" id="2_nfqtp"]
+[ext_resource type="PackedScene" uid="uid://b0hr1fn4i0rw" path="res://scenes/ui/background.tscn" id="2_o3cq5"]
+[ext_resource type="Texture2D" uid="uid://cktl1kk1nqv3j" path="res://assets/people/void/void-profile-spritesheet.png" id="4_na50v"]
 
 [node name="GameEndScreen" type="Control"]
 layout_mode = 3
@@ -11,6 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5pvtf")
+
+[node name="Background" parent="." instance=ExtResource("2_o3cq5")]
+layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -26,19 +31,34 @@ alignment = 1
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_nfqtp")
 text = "A Void"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_nfqtp")
 text = "Start"
 
 [node name="HighscoreLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_nfqtp")
 text = "Highscore"
 
+[node name="VoidProfile" type="Sprite2D" parent="."]
+position = Vector2(77, 152)
+scale = Vector2(0.367969, 0.367969)
+texture = ExtResource("4_na50v")
+hframes = 3
+
+[node name="AnimationTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

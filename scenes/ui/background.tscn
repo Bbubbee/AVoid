@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0hr1fn4i0rw"]
+
+[ext_resource type="Texture2D" uid="uid://bjjh2p0f1813a" path="res://assets/paper/paper-texture.jpg" id="1_ex1pr"]
+[ext_resource type="Script" path="res://scenes/ui/background.gd" id="2_n51sx"]
+
+[node name="Background" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ex1pr")
+expand_mode = 1
+script = ExtResource("2_n51sx")
+
+[node name="ChangeTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ChangeTimer" to="." method="_on_change_timer_timeout"]

@@ -21,3 +21,10 @@ func _on_button_pressed() -> void:
 func _on_main_menu_button_pressed() -> void:
 	Stats.reset_stats()
 	SceneTransition.change_scene("res://scenes/screens/game_end_screen.tscn")
+	
+@onready var hug = $Hug
+var f: int = 0
+func _on_animation_timer_timeout():
+	f += 1
+	if f > 3: f = 1
+	hug.frame = f

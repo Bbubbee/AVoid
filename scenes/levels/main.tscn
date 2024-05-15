@@ -1,42 +1,81 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsr7hmaqohut0"]
+[gd_scene load_steps=10 format=3 uid="uid://dsr7hmaqohut0"]
 
 [ext_resource type="PackedScene" uid="uid://b1payd28naxy7" path="res://scenes/player/player.tscn" id="3_342tw"]
 [ext_resource type="PackedScene" uid="uid://bw6lpwcsdikry" path="res://scenes/people/mother.tscn" id="3_800ej"]
 [ext_resource type="Script" path="res://scenes/ui/ui_root.gd" id="3_yhs2l"]
 [ext_resource type="Script" path="res://scenes/levels/camera.gd" id="4_nq8qp"]
+[ext_resource type="FontFile" uid="uid://d157e03g5uarl" path="res://assets/font/light_stories.ttf" id="5_gfba8"]
+[ext_resource type="PackedScene" uid="uid://b0hr1fn4i0rw" path="res://scenes/ui/background.tscn" id="5_i6dax"]
+[ext_resource type="PackedScene" uid="uid://wkxjwp25ccsh" path="res://scenes/player/void.tscn" id="5_sx3b4"]
+[ext_resource type="FontFile" uid="uid://cjr6tc40jew43" path="res://assets/font/creepy_circus.ttf" id="6_oqwpx"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lbovo"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yyj2"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 241.0
+
+[node name="Background" parent="Control" instance=ExtResource("5_i6dax")]
+layout_mode = 1
+offset_left = -11.0
+offset_top = -18.0
+offset_right = 11.0
+offset_bottom = 15.0
 
 [node name="Mother" parent="." instance=ExtResource("3_800ej")]
 
 [node name="Player" parent="." instance=ExtResource("3_342tw")]
+position = Vector2(79, 215)
 
-[node name="UIRoot" type="CanvasLayer" parent="."]
+[node name="UIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_yhs2l")
 
-[node name="VoidScore" type="HBoxContainer" parent="UIRoot"]
-offset_right = 86.0
-offset_bottom = 18.0
-
-[node name="VoidImage" type="TextureRect" parent="UIRoot/VoidScore"]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_lbovo")
-expand_mode = 2
-
-[node name="ScoreLabel" type="Label" parent="UIRoot/VoidScore"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 13
-text = "void score"
-
 [node name="HealthLabel" type="Label" parent="UIRoot"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1.0
+offset_left = 145.0
+offset_top = 4.0
+offset_right = 155.0
 offset_bottom = 23.0
 grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gfba8")
+text = "3"
+
+[node name="VoidScore" type="HBoxContainer" parent="UIRoot"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 88.0
+offset_bottom = 22.0
+
+[node name="PanelContainer" type="PanelContainer" parent="UIRoot/VoidScore"]
+custom_minimum_size = Vector2(21.99, 19.92)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5yyj2")
+
+[node name="Void" parent="UIRoot/VoidScore/PanelContainer" instance=ExtResource("5_sx3b4")]
+position = Vector2(10, 9)
+
+[node name="ScoreLabel" type="Label" parent="UIRoot/VoidScore"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oqwpx")
+theme_override_font_sizes/font_size = 14
+text = "0"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 120)

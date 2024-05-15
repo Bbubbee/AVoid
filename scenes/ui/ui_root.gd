@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var score_label: Label = $VoidScore/ScoreLabel
 @onready var health_label: Label = $HealthLabel

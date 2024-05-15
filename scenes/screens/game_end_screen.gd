@@ -12,3 +12,10 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	SceneTransition.change_scene("res://scenes/levels/main.tscn")
 
+@onready var void_profile = $VoidProfile
+
+var f: int = 0
+func _on_animation_timer_timeout():
+	f += 1
+	if f > 2: f = 1
+	void_profile.frame = f

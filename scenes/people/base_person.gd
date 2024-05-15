@@ -19,11 +19,10 @@ func init(new_person: Person):
 	set_physics_process(true)
 	
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	# Calculate speed. 
-	
-	position.y += ((person.speed/100) + (difficulty_modifier))
+	position.y += (((person.speed) + (difficulty_modifier*50))) * delta
 
 	# Free person.
 	if position.y > Lanes.bottom: 
