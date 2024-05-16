@@ -3,6 +3,8 @@ extends Control
 
 
 @onready var highscore_label: Label = $VBoxContainer/HighscoreLabel
+@onready var click = $Click
+
 
 
 func _ready() -> void:
@@ -11,6 +13,7 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	SceneTransition.change_scene("res://scenes/levels/main.tscn")
+	click.play()
 
 @onready var void_profile = $VoidProfile
 

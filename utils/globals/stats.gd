@@ -13,7 +13,7 @@ var void_score: int:
 signal set_difficulty(difficulty :int)
 var difficulty: int = 0:
 	set(new_difficulty):
-		difficulty = clamp(new_difficulty, 0, 4) 	
+		difficulty = clamp(new_difficulty, 0, 15) 	
 		set_difficulty.emit(difficulty)
 
 signal got_hugged

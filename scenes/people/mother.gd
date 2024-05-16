@@ -42,17 +42,17 @@ func get_random_person() -> Person:
 
 
 func _on_set_difficulty(difficulty: int):
-	if difficulty > 3: difficulty = 3 
 	match difficulty: 
 		1: 
-			spawn_time = 0.4
+			spawn_time = 0.5
 		2:
-			spawn_time = 0.3
+			spawn_time = 0.4
 		3: 
 			start_second_timer = true
-			print('starting level 3 ')
+			spawn_time = 0.3
+		8: 	
 			spawn_time = 0.2
-		4: 
+		14: 
 			spawn_time = 0.15
 			
 

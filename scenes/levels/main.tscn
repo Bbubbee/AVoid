@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsr7hmaqohut0"]
+[gd_scene load_steps=16 format=3 uid="uid://dsr7hmaqohut0"]
 
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_scef2"]
 [ext_resource type="PackedScene" uid="uid://b1payd28naxy7" path="res://scenes/player/player.tscn" id="3_342tw"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://wkxjwp25ccsh" path="res://scenes/player/void.tscn" id="5_sx3b4"]
 [ext_resource type="FontFile" uid="uid://cjr6tc40jew43" path="res://assets/font/creepy_circus.ttf" id="6_oqwpx"]
 [ext_resource type="Script" path="res://scenes/levels/pause_menu.gd" id="10_n88yy"]
+[ext_resource type="Script" path="res://scenes/audio/gameplay_music.gd" id="11_2leng"]
+[ext_resource type="AudioStream" uid="uid://brbwc0vo3xgss" path="res://assets/audio/a-growing-sense-of-tension.mp3" id="12_uroun"]
+[ext_resource type="AudioStream" uid="uid://bjmokad182h5n" path="res://assets/audio/pencil-writing-foley.mp3" id="13_hjtmq"]
+[ext_resource type="AudioStream" uid="uid://cldy6an61uarp" path="res://assets/audio/pencil-long.mp3" id="14_3p4qq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yyj2"]
 
@@ -113,3 +117,22 @@ theme_override_fonts/font = ExtResource("6_oqwpx")
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+script = ExtResource("11_2leng")
+
+[node name="Tension" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_uroun")
+volume_db = -10.0
+autoplay = true
+
+[node name="Drawing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_hjtmq")
+volume_db = -20.0
+autoplay = true
+
+[node name="DrawingLong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_3p4qq")
+volume_db = -18.0
+autoplay = true

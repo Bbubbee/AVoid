@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnecave51uqxb"]
+[gd_scene load_steps=9 format=3 uid="uid://bnecave51uqxb"]
 
 [ext_resource type="Script" path="res://scenes/screens/game_start_screen.gd" id="1_l8vry"]
 [ext_resource type="FontFile" uid="uid://d157e03g5uarl" path="res://assets/font/light_stories.ttf" id="2_bvacy"]
 [ext_resource type="PackedScene" uid="uid://b0hr1fn4i0rw" path="res://scenes/ui/background.tscn" id="2_fso46"]
 [ext_resource type="FontFile" uid="uid://cjr6tc40jew43" path="res://assets/font/creepy_circus.ttf" id="4_lscpu"]
 [ext_resource type="Texture2D" uid="uid://dbqsvdbm53qd2" path="res://assets/people/hug-spritesheet.png" id="5_g62cd"]
+[ext_resource type="AudioStream" uid="uid://5pmgj871213c" path="res://assets/audio/music/end/a-small-miracle-132333.mp3" id="6_l0xu1"]
+[ext_resource type="AudioStream" uid="uid://b08pp02rggsis" path="res://assets/audio/click-button.mp3" id="7_1tdxq"]
+[ext_resource type="AudioStream" uid="uid://bjmokad182h5n" path="res://assets/audio/pencil-writing-foley.mp3" id="8_u2n7t"]
 
 [node name="GameStartScreen" type="Control"]
 layout_mode = 3
@@ -96,6 +99,20 @@ hframes = 4
 
 [node name="AnimationTimer" type="Timer" parent="Hug"]
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_l0xu1")
+volume_db = -16.0
+autoplay = true
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1tdxq")
+volume_db = -12.0
+
+[node name="Drawing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_u2n7t")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

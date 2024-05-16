@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1payd28naxy7"]
+[gd_scene load_steps=8 format=3 uid="uid://b1payd28naxy7"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_finnm"]
 [ext_resource type="PackedScene" uid="uid://cpd203hmfijxs" path="res://utils/states/player_state_machine.tscn" id="1_xr3i2"]
 [ext_resource type="Script" path="res://scenes/player/live.gd" id="2_6fyax"]
 [ext_resource type="PackedScene" uid="uid://wkxjwp25ccsh" path="res://scenes/player/void.tscn" id="4_qwo2m"]
+[ext_resource type="AudioStream" uid="uid://sq7oeraxfdns" path="res://assets/audio/bump.mp3" id="5_qxwvh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tmtqg"]
 
@@ -46,5 +47,10 @@ wait_time = 0.8
 one_shot = true
 
 [node name="Void" parent="." instance=ExtResource("4_qwo2m")]
+
+[node name="Bump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qxwvh")
+volume_db = -6.0
+pitch_scale = 0.8
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -7,7 +7,7 @@ var difficulty_modifier: float
 
 
 func _ready() -> void:
-	difficulty_modifier = Stats.difficulty
+	difficulty_modifier = clamp(Stats.difficulty, 1, 5)
 	velocity.y = person.speed
 	
 

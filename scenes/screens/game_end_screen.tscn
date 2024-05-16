@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://si08yje5547n"]
+[gd_scene load_steps=9 format=3 uid="uid://si08yje5547n"]
 
 [ext_resource type="Script" path="res://scenes/screens/game_end_screen.gd" id="1_5pvtf"]
 [ext_resource type="FontFile" uid="uid://cjr6tc40jew43" path="res://assets/font/creepy_circus.ttf" id="2_nfqtp"]
 [ext_resource type="PackedScene" uid="uid://b0hr1fn4i0rw" path="res://scenes/ui/background.tscn" id="2_o3cq5"]
 [ext_resource type="Texture2D" uid="uid://cktl1kk1nqv3j" path="res://assets/people/void/void-profile-spritesheet.png" id="4_na50v"]
+[ext_resource type="AudioStream" uid="uid://b1fhfqtr0ihbh" path="res://assets/audio/music/intro/song-from-a-secret-garden-sad-piano-205576.mp3" id="5_jmoyv"]
+[ext_resource type="AudioStream" uid="uid://b08pp02rggsis" path="res://assets/audio/click-button.mp3" id="6_82rof"]
+[ext_resource type="AudioStream" uid="uid://koj444wladj" path="res://assets/audio/eerie-ambience.mp3" id="6_me1fq"]
+[ext_resource type="AudioStream" uid="uid://bjmokad182h5n" path="res://assets/audio/pencil-writing-foley.mp3" id="7_fm0hu"]
 
 [node name="GameEndScreen" type="Control"]
 layout_mode = 3
@@ -59,6 +63,25 @@ hframes = 3
 
 [node name="AnimationTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jmoyv")
+volume_db = -10.0
+autoplay = true
+
+[node name="EerieAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_me1fq")
+volume_db = -17.0
+autoplay = true
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_82rof")
+volume_db = -12.0
+
+[node name="Drawing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fm0hu")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]
