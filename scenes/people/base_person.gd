@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 var person: Person = preload("res://data/people/rav.tres")
 @onready var sprite: Sprite2D = $Sprite
@@ -8,21 +8,24 @@ var difficulty_modifier: float
 
 func _ready() -> void:
 	difficulty_modifier = Stats.difficulty
-	set_physics_process(false)
+	velocity.y = person.speed
+	
 
 func init(new_person: Person): 
 	person = new_person
 	
 	# Calculate speed. 
 	sprite.texture = person.texture
+	velocity.y = person.speed + ((person.speed * ((difficulty_modifier*10)/100)*1.5) )
 	
-	set_physics_process(true)
+	#set_physics_process(true)
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	move_and_slide()
 	
 	# Calculate speed. 
-	position.y += (((person.speed) + (difficulty_modifier*50))) * delta
+	#position.y += (((person.speed) + (difficulty_modifier*50))) * _delta
 
 	# Free person.
 	if position.y > Lanes.bottom: 

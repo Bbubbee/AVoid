@@ -19,3 +19,8 @@ func _on_animation_timer_timeout():
 	f += 1
 	if f > 2: f = 1
 	void_profile.frame = f
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed('enter'):
+		_on_button_pressed()

@@ -2,51 +2,59 @@ extends Node2D
 
 const BASE_PERSON = preload("res://scenes/people/base_person.tscn")
 
-var people = [] 
+var people = [
+	preload("res://data/people/rav.tres"),
+	preload("res://data/people/kim.tres"),
+	preload("res://data/people/kim.tres")
+] 
 
 func _ready() -> void:
 	# Signals. 
 	Stats.set_difficulty.connect(_on_set_difficulty)
 	
-	get_people() 
+	#get_people() 
 
-var spawn_time: float = 0.6
+var spawn_time: float = 0.5
 @onready var spawn_timer: float = spawn_time
 
-var spawn_time_2: float = 0.6
+var spawn_time_2: float = 0.5
 @onready var spawn_timer_2: float = spawn_time_2
 var start_second_timer: bool = false 
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	spawn_timer -= delta 
 	if spawn_timer <= 0: 
 		spawn_timer = spawn_time
 		spawn_children()
 	
 	# Hacky way of spawning more children.
-	if start_second_timer: 
-		spawn_timer_2 -= delta
-		if spawn_timer_2 <= 0: 
-			spawn_timer_2 = spawn_time+0.1
-			spawn_children()
+	#if start_second_timer: 
+		#spawn_timer_2 -= delta
+		#if spawn_timer_2 <= 0: 
+			#spawn_timer_2 = spawn_time
+			#spawn_children()
 
 
 func get_random_person() -> Person: 
-	var r = randi() % people.size()
-	return people[r] 		
+	return people.pick_random()		
 
 
 
 func _on_set_difficulty(difficulty: int):
+	if difficulty > 3: difficulty = 3 
 	match difficulty: 
 		1: 
-			pass
+			spawn_time = 0.4
 		2:
-			spawn_timer = 0.4
+			spawn_time = 0.3
 		3: 
 			start_second_timer = true
-			spawn_timer = 0.05
+			print('starting level 3 ')
+			spawn_time = 0.2
+		4: 
+			spawn_time = 0.15
+			
 
 
 func spawn_children(): 

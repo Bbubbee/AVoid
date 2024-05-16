@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmyqkyg444edq"]
+[gd_scene load_steps=8 format=3 uid="uid://bmyqkyg444edq"]
 
 [ext_resource type="Script" path="res://scenes/people/base_person.gd" id="1_u5sus"]
 [ext_resource type="Texture2D" uid="uid://b4e7ksj13hpvf" path="res://assets/people/kim/kim-spritesheet.png" id="2_8ubxy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4c3dc"]
+radius = 5.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxyiy"]
 radius = 6.0
@@ -12,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("../Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +32,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("../Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,12 +48,19 @@ _data = {
 "walk": SubResource("Animation_sevav")
 }
 
-[node name="BasePerson" type="Area2D"]
-collision_layer = 4
+[node name="BasePerson" type="CharacterBody2D"]
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_u5sus")
 
-[node name="Shape" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4c3dc")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Area"]
 shape = SubResource("CapsuleShape2D_xxyiy")
 debug_color = Color(0.894118, 0.266667, 0.470588, 0.419608)
 
@@ -61,6 +71,7 @@ texture = ExtResource("2_8ubxy")
 hframes = 2
 
 [node name="Animator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Area")
 libraries = {
 "": SubResource("AnimationLibrary_edeo3")
 }
