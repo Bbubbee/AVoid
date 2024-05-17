@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsr7hmaqohut0"]
+[gd_scene load_steps=17 format=3 uid="uid://dsr7hmaqohut0"]
 
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_scef2"]
 [ext_resource type="PackedScene" uid="uid://b1payd28naxy7" path="res://scenes/player/player.tscn" id="3_342tw"]
 [ext_resource type="PackedScene" uid="uid://bw6lpwcsdikry" path="res://scenes/people/mother.tscn" id="3_800ej"]
 [ext_resource type="Script" path="res://scenes/ui/ui_root.gd" id="3_yhs2l"]
+[ext_resource type="PackedScene" uid="uid://pb4en0c581r3" path="res://scenes/ui/void_text.tscn" id="3_yt7ng"]
 [ext_resource type="Script" path="res://scenes/levels/camera.gd" id="4_nq8qp"]
 [ext_resource type="FontFile" uid="uid://d157e03g5uarl" path="res://assets/font/light_stories.ttf" id="5_gfba8"]
 [ext_resource type="PackedScene" uid="uid://b0hr1fn4i0rw" path="res://scenes/ui/background.tscn" id="5_i6dax"]
@@ -32,6 +33,11 @@ offset_left = -11.0
 offset_top = -18.0
 offset_right = 11.0
 offset_bottom = 15.0
+
+[node name="VoidText" parent="Control" instance=ExtResource("3_yt7ng")]
+layout_mode = 1
+offset_top = -11.5
+offset_bottom = 11.5
 
 [node name="Mother" parent="." instance=ExtResource("3_800ej")]
 
@@ -107,9 +113,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 54.0
-offset_top = 103.0
+offset_top = 109.0
 offset_right = 111.0
-offset_bottom = 126.0
+offset_bottom = 132.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

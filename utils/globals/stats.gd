@@ -1,5 +1,6 @@
 extends Node
 
+signal show_text
 
 var void_score: int:
 	set(new_score):
@@ -9,6 +10,9 @@ var void_score: int:
 		# Every 25 points increase the difficulty. 
 		if void_score % 25 == 0: 
 			difficulty += 1 
+		
+		if void_score % 50 == 0: 
+			show_text.emit()
 	
 signal set_difficulty(difficulty :int)
 var difficulty: int = 0:
