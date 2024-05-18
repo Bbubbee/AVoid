@@ -2,6 +2,8 @@ extends Node2D
 
 const BASE_PERSON = preload("res://scenes/people/base_person.tscn")
 
+# Load the people manually. 
+# Kim has a higher change to spawn than Rav. 
 var people = [
 	preload("res://data/people/rav.tres"),
 	preload("res://data/people/kim.tres"),
@@ -17,30 +19,16 @@ func _ready() -> void:
 var spawn_time: float = 0.5
 @onready var spawn_timer: float = spawn_time
 
-var spawn_time_2: float = 0.5
-@onready var spawn_timer_2: float = spawn_time_2
-var start_second_timer: bool = false 
-
 
 func _physics_process(delta: float) -> void:
+	# Spawn a set of children.
 	spawn_timer -= delta 
 	if spawn_timer <= 0: 
 		spawn_timer = spawn_time
 		spawn_children()
-	
-	# Hacky way of spawning more children.
-	#if start_second_timer: 
-		#spawn_timer_2 -= delta
-		#if spawn_timer_2 <= 0: 
-			#spawn_timer_2 = spawn_time
-			#spawn_children()
 
 
-func get_random_person() -> Person: 
-	return people.pick_random()		
-
-
-
+## Set the difficulty based on the amount of void score. 
 func _on_set_difficulty(difficulty: int):
 	match difficulty: 
 		1: 
@@ -48,15 +36,13 @@ func _on_set_difficulty(difficulty: int):
 		2:
 			spawn_time = 0.4
 		3: 
-			start_second_timer = true
 			spawn_time = 0.3
 		8: 	
 			spawn_time = 0.2
 		14: 
 			spawn_time = 0.15
 			
-
-
+## Spawn a set of children. 
 func spawn_children(): 
 	# Prevent spawning person in the same lane. 
 	var prev = []
@@ -69,13 +55,14 @@ func spawn_children():
 		var person = BASE_PERSON.instantiate()
 		add_child(person)
 		
-		person.init(get_random_person())
+		person.init(people.pick_random())
 		person.global_position.x = Lanes.lanes[r]
 		
 		prev.append(r)
 
 
-## Get all of the 'people' resources from the relevant directory. 
+## Get all of the 'people' resources from the 'people' directory and store
+## them in the array. 
 func get_people():
 	var path: String = "res://data/people"
 	var dir = DirAccess.open(path)

@@ -12,6 +12,8 @@ void fragment() {
 		COLOR.a -= 1.0;
 	}
 	else {
-		COLOR = current_pixel;
+		COLOR.a = current_pixel.a;
 	}
+	
+	
 }

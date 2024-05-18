@@ -35,9 +35,6 @@ offset_right = 11.0
 offset_bottom = 15.0
 
 [node name="VoidText" parent="Control" instance=ExtResource("3_yt7ng")]
-layout_mode = 1
-offset_top = -11.5
-offset_bottom = 11.5
 
 [node name="Mother" parent="." instance=ExtResource("3_800ej")]
 

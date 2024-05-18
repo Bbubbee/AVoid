@@ -4,6 +4,9 @@ extends Label
 
 var dissolve
 var dissolve_in: bool = false
+"theme_override_colors/font_color"
+
+var black: Color = Color.BLACK
 
 func _ready() -> void:
 	dissolve = material
@@ -28,11 +31,9 @@ func _process(delta: float) -> void:
 		dissolve.set('shader_parameter/value', x)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('enter'):
-		#timer.start(5.0)
+	if event.is_action_pressed('secret'):
+		timer.start(2.6)
 		dissolve_in = not dissolve_in
-
-
 
 
 func _on_timer_timeout() -> void:

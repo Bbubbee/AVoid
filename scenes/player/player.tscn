@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1payd28naxy7"]
+[gd_scene load_steps=13 format=3 uid="uid://b1payd28naxy7"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_finnm"]
 [ext_resource type="PackedScene" uid="uid://cpd203hmfijxs" path="res://utils/states/player_state_machine.tscn" id="1_xr3i2"]
 [ext_resource type="Script" path="res://scenes/player/live.gd" id="2_6fyax"]
 [ext_resource type="PackedScene" uid="uid://wkxjwp25ccsh" path="res://scenes/player/void.tscn" id="4_qwo2m"]
 [ext_resource type="AudioStream" uid="uid://sq7oeraxfdns" path="res://assets/audio/bump.mp3" id="5_qxwvh"]
+[ext_resource type="AudioStream" uid="uid://3sdg0c8m3gv6" path="res://assets/audio/keys/fminor-pentatonic.mp3" id="6_83g11"]
+[ext_resource type="AudioStream" uid="uid://s6lxc2d21x3f" path="res://assets/audio/keys/gsharp.mp3" id="7_bgm18"]
+[ext_resource type="AudioStream" uid="uid://7lr1gysyovlp" path="res://assets/audio/keys/asharp.mp3" id="8_u8fib"]
+[ext_resource type="AudioStream" uid="uid://cn7virn5kpgxr" path="res://assets/audio/keys/c.mp3" id="9_xkm4c"]
+[ext_resource type="AudioStream" uid="uid://b3ym83dfhb8hf" path="res://assets/audio/keys/dsharp.mp3" id="10_76scj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tmtqg"]
 
@@ -52,5 +57,25 @@ one_shot = true
 stream = ExtResource("5_qxwvh")
 volume_db = -6.0
 pitch_scale = 0.8
+
+[node name="F_Lane1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_83g11")
+volume_db = -5.0
+
+[node name="GSharp_Lane2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bgm18")
+volume_db = -5.0
+
+[node name="ASharp_Lane3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_u8fib")
+volume_db = -5.0
+
+[node name="C_Lane4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xkm4c")
+volume_db = -5.0
+
+[node name="DSharp_Lane5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_76scj")
+volume_db = -5.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

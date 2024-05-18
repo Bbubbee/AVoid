@@ -11,12 +11,16 @@ func _ready() -> void:
 	
 	health_label.text = str(Stats.hp)
 
+var game_over: bool = false
+
 func _on_void_score_increased(score):
+	#if game_over: return
 	score_label.text = str(score)
 
 func _on_hp_changed(new_hp): 
 	health_label.text = str(new_hp)
 
 func _on_game_over():
+	game_over = true
 	SceneTransition.change_scene("res://scenes/screens/game_start_screen.tscn")
 	
