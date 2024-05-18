@@ -8,32 +8,41 @@ var dissolve_in: bool = false
 
 var black: Color = Color.BLACK
 
+# List of texts.
+var texts = [
+	'who am i?', 'come home', 'where am i?', 'liar', 'it hurts', 'find me', 'i see u'
+]
+
 func _ready() -> void:
 	dissolve = material
 	
 	Stats.show_text.connect(_on_show_text) 
 	dissolve.set('shader_parameter/value', 0)
-	
-	#set_process(false)
 
 func _on_show_text():
-	set_process(true)
+	if not dissolve_in: 
+		text = texts.pick_random()
+		timer.start(show_text_time)
+		dissolve_in = true
 
 
-var x: float = 0.0
+var dissolve_status: float = 0.0
+var dissolve_rate: float = 1.5
+var show_text_time: float = 4.2
 
 func _process(delta: float) -> void:
 	if dissolve_in: 
-		x = clamp(x+delta/2, 0, 1.0)
-		dissolve.set('shader_parameter/value', x)
+		dissolve_status = clamp(dissolve_status+delta/dissolve_rate, 0, 1.0)
+		dissolve.set('shader_parameter/value', dissolve_status)
 	else: 
-		x = clamp(x-delta/2, 0, 1.0)
-		dissolve.set('shader_parameter/value', x)
+		dissolve_status = clamp(dissolve_status-delta/dissolve_rate, 0, 1.0)
+		dissolve.set('shader_parameter/value', dissolve_status)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('secret'):
-		timer.start(2.6)
-		dissolve_in = not dissolve_in
+	if event.is_action_pressed('secret') and not dissolve_in:
+		text = texts.pick_random()
+		timer.start(show_text_time)
+		dissolve_in = true
 
 
 func _on_timer_timeout() -> void:

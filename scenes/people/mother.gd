@@ -40,7 +40,7 @@ func _on_set_difficulty(difficulty: int):
 		8: 	
 			spawn_time = 0.2
 		14: 
-			spawn_time = 0.15
+			spawn_time = 0.18
 			
 ## Spawn a set of children. 
 func spawn_children(): 

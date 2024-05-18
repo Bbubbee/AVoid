@@ -14,12 +14,17 @@ var void_score: int:
 		void_score = new_score
 		Events.void_score_increased.emit(void_score)
 		
+		# Show void's texts at different times based on the score. 
+		if void_score > 300: 
+			if void_score % 100 == 0: 
+				show_text.emit()
+		else: 
+			if void_score % 75 == 0: 
+				show_text.emit()
+				
 		# Every 25 points increase the difficulty. 
 		if void_score % 25 == 0: 
-			difficulty += 1 
-		
-		if void_score % 50 == 0: 
-			show_text.emit()
+				difficulty += 1 
 
 """
 	Set the difficulty every 25 points. 
